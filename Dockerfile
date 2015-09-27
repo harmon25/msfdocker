@@ -1,5 +1,5 @@
 FROM kalilinux/kali-linux-docker
-MAINTAINER nomraharmon@gmail.com
+MAINTAINER harmon25 "nomraharmon@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,11 +7,13 @@ RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean
 
 RUN apt-get -y install metasploit-framework && apt-get clean
 
-COPY ./init.sh /init.sh
+RUN bash /cleanup.sh
 
 ENV MSF_DATABASE_CONFIG /etc/database.yml
 ENV PGPASSFILE /.pgpass
 
-EXPOSE 55555
+COPY ./init.sh /init.sh
 
-CMD ["/init.sh"]
+EXPOSE 55553
+
+ENTRYPOINT bash init.sh
