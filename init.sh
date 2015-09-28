@@ -16,7 +16,7 @@ echo "msfdb:5432:*:postgres:$MSFDB_ENV_POSTGRES_PASSWORD" > /.pgpass
 chmod 0600 /.pgpass
 
 # Check if we have already ran this container and created the DB 
-if psql --username postgres -d postgres --host msfdb --no-password -lqt | cut -d \| -f 1 | grep -v -w $MSF_DB; then
+if psql --username postgres -d postgres --host msfdb --no-password -lqt | cut -d \| -f 1 | grep -w $MSF_DB; then
     # database exists
     echo "$MSF_DB Already exists"
 else
@@ -35,11 +35,13 @@ fi
 #update metasploit 
 /usr/share/metasploit-framework/msfupdate
 
+CLI="cli"
+RPC="rpc"
 # if launching interactively...
-if [ "$MODE" = "cli" ]; then
+if [ "$MODE" = "$CLI" ]; then
     #run msfconsole
     /usr/share/metasploit-framework/msfconsole
-elif [ "$MODE" = "rpc" ]; then
+elif [ "$MODE" = "$RPC" ]; then
     IP_ADD=`ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'`
     echo "msfrpcd listening on $IP_ADD"
     /usr/share/metasploit-framework/msfrpcd -U $MSF_RPCD_USER -P $MSF_RPCD_PASS -f
