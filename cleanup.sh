@@ -1,4 +1,4 @@
-set -e
+#!/bin/bash
 
 # Clean out docs
 rm -rf /usr/share/doc /usr/share/doc-base /usr/share/man /usr/share/locale /usr/share/zoneinfo

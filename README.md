@@ -20,26 +20,29 @@ docker run --name msfdocked \
   -e MSF_DB=msfdb \
   -e MSF_RPCD_USER=msfUser \
   -e MSF_RPCD_PASS=agoodPass \
-  harmon25/msfdocker:latest
+  harmon25/msfdocker
 ```
 
-## msfconsole mode
+## interactive msfconsole mode
 ```bash
 docker run --name msfdocked \
-  --link msfdb:msfdb \
+  -it
+  --link msfpgdb:msfdb \
   -e MODE=cli \
   -e MSF_DB_USER=msf \
   -e MSF_DB_PASS=msfdbpass \
   -e MSF_DB=msfdb \
-  harmon25/msfdocker:latest
+  msfdocked
+  harmon25/msfdocker
 ```
 
-## interactive mode
+## interactive bash mode
 ```bash
 docker run --name msfdocked \
+  -it
   --link msfdb:msfdb \
   -e MSF_DB_USER=msf \
   -e MSF_DB_PASS=msfdbpass \
   -e MSF_DB=msfdb \
-  harmon25/msfdocker:latest
+  harmon25/msfdocker
 ```
