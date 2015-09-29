@@ -32,7 +32,6 @@ docker run --name msfdocked \
   -e MSF_DB_USER=msf \
   -e MSF_DB_PASS=msfdbpass \
   -e MSF_DB=msfdb \
-  msfdocked
   harmon25/msfdocker
 ```
 
