@@ -26,7 +26,7 @@ docker run --name msfdocked \
 ## interactive msfconsole mode
 ```bash
 docker run --name msfdocked \
-  -it
+  -it \
   --link msfpgdb:msfdb \
   -e MODE=cli \
   -e MSF_DB_USER=msf \
@@ -39,7 +39,7 @@ docker run --name msfdocked \
 ## interactive bash mode
 ```bash
 docker run --name msfdocked \
-  -it
+  -it \
   --link msfdb:msfdb \
   -e MSF_DB_USER=msf \
   -e MSF_DB_PASS=msfdbpass \
